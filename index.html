@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroJob BD v2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Auth Screen -->
+        <div id="auth-screen" class="auth-container">
+            <!-- Login View -->
+            <div id="login-card" class="auth-card card">
+                <div class="logo-area text-center">
+                    <span class="logo-icon">💼</span>
+                    <h1>MicroJob BD</h1>
+                    <p class="subtitle">Complete Tasks & Earn USDT</p>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="login-username" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="Enter password">
+                </div>
+                <button onclick="auth.login()" class="btn-primary">Login</button>
+                <p class="hint text-muted text-center" style="margin-top:16px;">
+                    New User? <a href="#" onclick="auth.switchAuthView('register'); return false;" style="color:var(--accent); font-weight:600; text-decoration:none;">Register Here</a>
+                </p>
+            </div>
+
+            <!-- Register View -->
+            <div id="register-card" class="auth-card card" style="display:none;">
+                <div class="logo-area text-center">
+                    <span class="logo-icon">💼</span>
+                    <h1>Create Account</h1>
+                    <p class="subtitle">Join MicroJob BD today</p>
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="reg-name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Gmail Address</label>
+                    <input type="email" id="reg-email" placeholder="name@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="reg-username" placeholder="Choose a username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="reg-password" placeholder="Create password">
+                </div>
+                <div class="form-group">
+                    <label>Referral Code (Optional)</label>
+                    <input type="text" id="reg-ref" placeholder="e.g. MJ123">
+                </div>
+                <button onclick="auth.register()" class="btn-primary">Register</button>
+                <p class="hint text-muted text-center" style="margin-top:16px;">
+                    Already have an account? <a href="#" onclick="auth.switchAuthView('login'); return false;" style="color:var(--accent); font-weight:600; text-decoration:none;">Login Here</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="main-content" style="display:none;">
+            <header class="app-header">
+                <div class="brand">💼 MicroJob BD</div>
+                <div id="user-bar" class="user-bar"></div>
+                <button class="logout-btn" onclick="auth.logout()" title="Logout">Logout 🚪</button>
+            </header>
+
+            <main id="view-container" class="view-container"></main>
+
+            <nav class="bottom-nav">
+                <button id="nav-tasks" onclick="ui.showTab('tasks')">
+                    <span class="nav-icon">📋</span>
+                    <span>Tasks</span>
+                </button>
+                <button id="nav-post" onclick="ui.showTab('post')">
+                    <span class="nav-icon">➕</span>
+                    <span>Post</span>
+                </button>
+                <button id="nav-wallet" onclick="ui.showTab('wallet')">
+                    <span class="nav-icon">💰</span>
+                    <span>Wallet</span>
+                </button>
+                <button id="nav-ref" onclick="ui.showTab('ref')">
+                    <span class="nav-icon">🔗</span>
+                    <span>Refer</span>
+                </button>
+                <button id="nav-contact" onclick="ui.showTab('contact')">
+                    <span class="nav-icon">💬</span>
+                    <span>Admin</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
